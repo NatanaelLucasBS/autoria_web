@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Inversão de nome!</title>
+    </head>
+    <body>
+        <form id="Nomes">
+
+            <div>    
+                <label for="1nome">Nome 1:</label>
+                <input type="text" id="1nome" name="1nome" placeholder="Nome 1!" class="campo-nome">
+            </div>
+
+            <div>
+                <label for="2nome">Nome 2:</label>
+                <input type="text" id="2nome" name="2ome" placeholder="Nome 2!" class="campo-nome">
+            </div>
+
+            <div>
+                <label for="3nome">Nome 3:</label>
+                <input type="text" id="3nome" name="3nome" placeholder="Nome 3!" class="campo-nome">
+            </div>
+
+            <div>
+                <label for="4nome">Nome 4:</label>
+                <input type="text" id="4nome" name="4nome" placeholder="Nome 4!" class="campo-nome">
+            </div>
+
+            <div>
+                <label for="5nome">Nome 5:</label>
+                <input type="text" id="5nome" name="5nome" placeholder="Nome 5!" class="campo-nome">
+            </div>
+
+            <button type="button" id="inverterNomes">Inverta os nomes!</button>
+
+        </form>
+        <script>
+            const bntInverter = document.getElementById('inverterNomes')
+
+            bntInverter.addEventListener('click', function(){
+                const campoNome = document.querySelectorAll('.campo-nome')
+                
+                let nomes = Array.from(campoNome).map(campo => campo.value);
+
+                nomes.reverse();
+
+                campoNome.forEach((campo, index) => {
+                    campo.value = nomes[index];
+                });
+            });
+
+        </script>
+    </body>
+</html>

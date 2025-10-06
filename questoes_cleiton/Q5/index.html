@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Formulario</title>
+    </head>
+    <body>
+        <p>Preencha o login</p>
+        <form id="login">
+            <div>
+                <label for="usuario">Usuário:</label>
+                <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário!">
+            </div>
+
+            <div>
+                <label for="senha">Senha:</label>
+                <input type="text" id="senha" name="senha" placeholder="Digite sua senha!"
+            </div>
+
+            <div>
+                <label for="senhaC">Confirmar Senha:</label>
+                <input type="text" id="senhaC" name="senhaC" placeholder="Confirme sua senha!"
+            </div>
+
+            <div>
+                <button type="submit">Enviar!</button>
+            </div>
+        </form>
+
+        <script>
+            const Clogin = document.getElementById('login')
+            const senhaV = document.getElementById('senha')
+            const usuarioV = document.getElementById('usuario')
+            const senhaCon = document.getElementById('senhaC')
+
+            Clogin.addEventListener('submit', function(event){
+                event.preventDefault()
+
+                const valorUsuario = usuarioV.value.trim()
+                const valorSenha = senhaV.value.trim()
+                const valorConfSenha = senhaCon.value.trim()
+
+                if(valorUsuario === '' || valorSenha === '' || valorConfSenha === ''){
+                    alert('Preencha o login!');
+                }else if(valorSenha !== valorConfSenha){
+                        alert('Senha não equivalentes!')
+                }else if(valorSenha.length < 6 || valorSenha.length > 10){
+                        alert('A senha deve ter entre 6 a 10 digitos');        
+                }else alert('Login confirmado!');    
+            });
+
+        </script>
+    </body>
+</html>
