@@ -1,0 +1,85 @@
+
+<!-- 12) Crie uma página contendo um determinado texto (pode ser qualquer texto da internet). 
+Acima do texto, inclua um formulário com um campo e um botão Pesquisar. Ao digitar uma 
+palavra dentro do campo e pressionar o botão Pesquisar, conte quantas ocorrências daquela 
+palavra existem ao longo do texto e destaque cada ocorrência com um plano de fundo amarelo 
+(conforme esse exemplo: palavra). Caso a palavra não exista no texto, exiba uma mensagem 
+abaixo do campo de texto indicando que a busca não retornou nenhum resultado. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pesquisa de Palavra</title>
+</head>
+<body>
+    <h1>Pesquisa de Palavra em um Texto</h1>
+
+ 
+    <form id="form">
+        <label>Digite uma palavra: </label>
+        <input type="text" id="palavra" required>
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    
+    <p id="mensagem" style="color:red; font-weight:bold;"></p>
+
+    
+    <div id="texto" style="margin-top:20px; width:600px;">
+        <p>
+            A programação é uma habilidade muito importante no mundo atual. 
+            Aprender programação ajuda no desenvolvimento do raciocínio lógico 
+            e também abre portas para diversas oportunidades no mercado de trabalho.
+            A prática constante de programação é fundamental para evoluir e se destacar.
+        </p>
+    </div>
+
+    <script>
+        
+        const form = document.getElementById("form");
+
+        
+        form.addEventListener("submit", function(event){
+            event.preventDefault(); 
+
+            
+            let palavra = document.getElementById("palavra").value.trim();
+
+            
+            let textoOriginal = `
+                A programação é uma habilidade muito importante no mundo atual. 
+                Aprender programação ajuda no desenvolvimento do raciocínio lógico 
+                e também abre portas para diversas oportunidades no mercado de trabalho.
+                A prática constante de programação é fundamental para evoluir e se destacar.
+            `;
+
+           
+            let regex = new RegExp(palavra, "gi");
+
+           
+            let ocorrencias = (textoOriginal.match(regex) || []).length;
+
+            
+            if(ocorrencias > 0){
+               
+                let textoDestacado = textoOriginal.replace(regex, 
+                    `<span style="background:yellow;">${palavra}</span>`
+                );
+
+                
+                document.getElementById("texto").innerHTML = `<p>${textoDestacado}</p>`;
+
+                document.getElementById("mensagem").innerText = 
+                    `Foram encontradas ${ocorrencias} ocorrência(s) da palavra "${palavra}".`;
+            } else {
+                
+                document.getElementById("mensagem").innerText = 
+                    `A palavra "${palavra}" não foi encontrada no texto.`;
+
+                
+                document.getElementById("texto").innerHTML = `<p>${textoOriginal}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>

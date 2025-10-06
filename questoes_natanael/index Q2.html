@@ -1,0 +1,33 @@
+2-  Crie uma página com 4 links, cada um representando o nome de uma cor, que, utilizando o 
+evento onmouseover altere a cor do plano de fundo para cor correspondente (dica utilize o 
+atributo style="background-color: red;"). -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Mudança de cor</title>
+    <style> 
+        body {
+            transition: backgroud-color 0.5;
+
+        }
+        a{
+            margin: 0.65 rem;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" onmouseover="alterarcor('red')">vermelho</a>
+    <a href="#" onmouseover="alterarcor('green')">verde</a>
+    <a href="#" onmouseover="alterarcor('yellow')">amarelo</a>
+    <a href="#" onmouseover="alterarcor('blue')">azul</a>
+
+    <script> 
+        function alterarcor(cor){
+            document.body.style.backgroundColor = cor;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!--10) Escreva um script que receba três números fornecidos pelo usuário através de um formulário
+exiba em os números digitados em forma de tabela, a soma, a média, o produto, o maior e
+menor número-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Números</title>
+</head>
+<body>
+    <h1>Digite 3 Números</h1>
+
+    <form id="form"> 
+        <div>
+            <label>Número 1</label>
+            <input type="number" id="num1" required>
+
+            <label>Número 2</label>
+            <input type="number" id="num2" required>
+
+            <label>Número 3</label>
+            <input type="number" id="num3" required>
+
+
+        </div>
+
+    <button type="submit">Calcular</button>
+
+    </form>
+
+     <div id="resultados" style="display:none">
+        <h2>Resultados</h2>
+        
+        <h3>Números Digitados:</h3>
+        <table border="1">
+            <tr>
+                <th>Número 1</th>
+                <th>Número 2</th>
+                <th>Número 3</th>
+            </tr>
+            <tr id="linhaNumeros">
+             
+            </tr>
+        </table>
+        
+        <h3>Cálculos:</h3>
+        <table border="1">
+            <tr>
+                <th>Soma</th>
+                <th>Média</th>
+                <th>Produto</th>
+                <th>Maior</th>
+                <th>Menor</th>
+            </tr>
+            <tr id="linhaResultados">
+                
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        const form = document.getElementById("form");
+
+        form.addEventListener("submit", function(event){
+            event.preventDefault();
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            let n3 = parseFloat(document.getElementById("num3").value);
+
+
+            let soma = n1 + n2 + n3;
+            let media = soma / 3;
+            let produto = n1 * n2 * n3;
+            let maior = Math.max(n1, n2, n3);
+            let menor = Math.min(n1, n2, n3);
+
+                document.getElementById("linhaNumeros").innerHTML = `
+                <td>${n1}</td>
+                <td>${n2}</td>
+                <td>${n3}</td>
+            `;
+
+            document.getElementById("linhaResultados").innerHTML = `
+                <td>${soma}</td>
+                <td>${media.toFixed(2)}</td>
+                <td>${produto}</td>
+                <td>${maior}</td>
+                <td>${menor}</td>
+            `;
+
+             document.getElementById("resultados").style.display = "block";
+
+
+        });
+
+
+        
+        
+    </script>
+
+
+</body>
